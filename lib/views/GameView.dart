@@ -95,7 +95,7 @@ class _GameViewPageState extends State<GameViewPage> {
           body: Column(
             children: [
               const Padding(padding: EdgeInsets.all(8)),
-              Text("Lotto Number Generator",
+              Text("Bungos Number Generator",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
