@@ -129,7 +129,7 @@ class _GameViewPageState extends State<GameViewPage> {
                       onPressed: () async {
                         _triggerAllSpinners();
                       },
-                      style: ElevatedButton.styleFrom(backgroundColor: kfifth),
+                      style: ElevatedButton.styleFrom(backgroundColor: kprimary),
                       child: Text("Spin!",
                           style: TextStyle(
                               color: ktext,
