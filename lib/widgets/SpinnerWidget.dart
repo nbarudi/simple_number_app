@@ -116,7 +116,7 @@ class SpinnerWidgetState extends State<SpinnerWidget> {
                 style: TextStyle(
                   fontSize: widget.width/2,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: ktext,
                 ),
               ),
             );

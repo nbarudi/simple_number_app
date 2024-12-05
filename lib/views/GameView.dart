@@ -89,7 +89,7 @@ class _GameViewPageState extends State<GameViewPage> {
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [kprimary, ksecondary])),
+                colors: [kprimary, ksixth, ksecondary])),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           body: Column(
@@ -100,7 +100,7 @@ class _GameViewPageState extends State<GameViewPage> {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: width * 0.1,
-                      color: ktertiery)),
+                      color: ktext)),
               const Padding(padding: EdgeInsets.all(40)),
               if (spinners.isNotEmpty)
                 SizedBox(
@@ -132,7 +132,7 @@ class _GameViewPageState extends State<GameViewPage> {
                       style: ElevatedButton.styleFrom(backgroundColor: kfifth),
                       child: Text("Spin!",
                           style: TextStyle(
-                              color: Colors.white,
+                              color: ktext,
                               fontSize: width * 0.5 * 0.15))),
                 ),
               )
@@ -165,7 +165,7 @@ class _GameViewPageState extends State<GameViewPage> {
                 _initializeSpinners();
               },
               iconSize: 50,
-              color: ktertiery,
+              color: ksixth,
               icon: const Icon(Icons.settings)),
         ));
   }
