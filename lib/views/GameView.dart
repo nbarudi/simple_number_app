@@ -29,31 +29,31 @@ class _GameViewPageState extends State<GameViewPage> {
   }
 
   void _initializeSpinners() {
-    setState(() {
-      final baseW = MediaQuery.of(context).size.width;
+      setState(() {
+        spinners = [];
+        final baseW = MediaQuery.of(context).size.width;
 
-      final widthPer =
-          (baseW - spinnerPadding * (numbersPerLine + 1)) / numbersPerLine;
+        final widthPer =
+            (baseW - spinnerPadding * (numbersPerLine + 1)) / numbersPerLine;
 
-      for (int i = 0; i < numberOfLines; i++) {
-        final result = specialNumberGenerator.limitedMultiNumberInRange(
-            minNum, maxNum, numbersPerLine);
+        for (int i = 0; i < numberOfLines; i++) {
+          final result = specialNumberGenerator.limitedMultiNumberInRange(
+              minNum, maxNum, numbersPerLine);
 
-        List<SpinnerWidget> spinnerWidgets = result.map((value) {
-          final spinnerKey = GlobalKey<SpinnerWidgetState>();
-          return SpinnerWidget(
-            minNum,
-            maxNum,
-            value,
-            widthPer,
-            widthPer,
-            key: spinnerKey,
-          );
-        }).toList();
-
-        spinners.add(spinnerWidgets);
-      }
-    });
+          List<SpinnerWidget> spinnerWidgets = result.map((value) {
+            final spinnerKey = GlobalKey<SpinnerWidgetState>();
+            return SpinnerWidget(
+              minNum,
+              maxNum,
+              value,
+              widthPer,
+              widthPer,
+              key: spinnerKey,
+            );
+          }).toList();
+          spinners.add(spinnerWidgets);
+        }
+      });
   }
 
   Future<void> _triggerSpinner(List<SpinnerWidget> line) async {

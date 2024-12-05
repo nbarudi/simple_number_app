@@ -42,6 +42,7 @@ class SpinnerWidgetState extends State<SpinnerWidget> {
   }
 
   Future<void> triggerScroll() async {
+    if(spinning) return;
     spinning = true;
 
     while(spinning) {
@@ -61,6 +62,7 @@ class SpinnerWidgetState extends State<SpinnerWidget> {
 
   Future<void> scrollToResult() async {
     int number = widget.result;
+    if(!spinning) return;
     spinning = false;
     if (!scrollController.hasClients) {
       print("ScrollController is not attached to any scroll view.");
