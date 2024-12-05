@@ -9,6 +9,7 @@ const ktertiery = Color(0xFFFF0000);
 const kfourth = Color(0xFFC30000);
 const kfifth = Color(0xFF097000);
 const ksixth = Color(0xFFFFFFFF);
+const kseventh = Color(0xFF636363);
 const ktext = Color(0xFF000000);
 
 const spinnerPadding = 8.0;

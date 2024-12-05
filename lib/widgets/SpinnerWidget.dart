@@ -102,7 +102,7 @@ class SpinnerWidgetState extends State<SpinnerWidget> {
       width: widget.width,
       height: widget.height,
       decoration: const BoxDecoration(
-        gradient: RadialGradient(colors: [ktertiery, kfourth]),
+        gradient: RadialGradient(colors: [ksixth, kseventh]),
       ),
       child: SingleChildScrollView(
         controller: scrollController,
