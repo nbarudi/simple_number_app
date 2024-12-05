@@ -56,14 +56,27 @@ class _GameViewPageState extends State<GameViewPage> {
     });
   }
 
-  Future<void> _triggerAllSpinners() async {
-    for (final line in spinners) {
-      for (final spinner in line) {
-        final spinnerKey = spinner.key as GlobalKey<SpinnerWidgetState>?;
-        if (spinnerKey != null && spinnerKey.currentState != null) {
-          await spinnerKey.currentState!.triggerScroll();
-        }
+  Future<void> _triggerSpinner(List<SpinnerWidget> line) async {
+    for (final spinner in line) {
+      final spinnerKey = spinner.key as GlobalKey<SpinnerWidgetState>?;
+      if (spinnerKey != null && spinnerKey.currentState != null) {
+        spinnerKey.currentState!.triggerScroll();
+        await Future.delayed(const Duration(milliseconds: 250));
       }
+    }
+
+    for(final spinner in line) {
+      final spinnerKey = spinner.key as GlobalKey<SpinnerWidgetState>?;
+      if (spinnerKey != null && spinnerKey.currentState != null) {
+        await spinnerKey.currentState!.scrollToResult();
+        await Future.delayed(const Duration(seconds: 1));
+      }
+    }
+  }
+
+  void _triggerAllSpinners() {
+    for (final line in spinners) {
+      _triggerSpinner(line);
     }
   }
 
@@ -114,7 +127,7 @@ class _GameViewPageState extends State<GameViewPage> {
                   width: width * 0.5,
                   child: ElevatedButton(
                       onPressed: () async {
-                        await _triggerAllSpinners();
+                        _triggerAllSpinners();
                       },
                       style: ElevatedButton.styleFrom(backgroundColor: kfifth),
                       child: Text("Spin!",

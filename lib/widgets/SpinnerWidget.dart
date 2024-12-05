@@ -23,6 +23,8 @@ class SpinnerWidgetState extends State<SpinnerWidget> {
   late List<int> numRange;
   final Map<int, GlobalKey> itemKeys = {};
 
+  bool spinning = false;
+
   @override
   void initState() {
     super.initState();
@@ -40,25 +42,26 @@ class SpinnerWidgetState extends State<SpinnerWidget> {
   }
 
   Future<void> triggerScroll() async {
-    if (!scrollController.hasClients) {
-      print("ScrollController is not attached to any scroll view.");
-      return;
-    }
+    spinning = true;
 
-    await scrollController.animateTo(
-      scrollController.position.maxScrollExtent,
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.linear,
-    );
-    await scrollController.animateTo(
-      scrollController.position.minScrollExtent,
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.linear,
-    );
-    await scrollToNumber(widget.result);
+    while(spinning) {
+      await scrollController.animateTo(
+        scrollController.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.linear,
+      );
+      if(!spinning) continue;
+      await scrollController.animateTo(
+        scrollController.position.minScrollExtent,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.linear,
+      );
+    }
   }
 
-  Future<void> scrollToNumber(int number) async {
+  Future<void> scrollToResult() async {
+    int number = widget.result;
+    spinning = false;
     if (!scrollController.hasClients) {
       print("ScrollController is not attached to any scroll view.");
       return;
