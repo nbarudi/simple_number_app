@@ -46,12 +46,15 @@ class SpinnerWidgetState extends State<SpinnerWidget> {
     spinning = true;
 
     while(spinning) {
+
+      if(!scrollController.hasClients) break;
+
       await scrollController.animateTo(
         scrollController.position.maxScrollExtent,
         duration: const Duration(milliseconds: 500),
         curve: Curves.linear,
       );
-      if(!spinning) continue;
+      if(!spinning || !scrollController.hasClients) continue;
       await scrollController.animateTo(
         scrollController.position.minScrollExtent,
         duration: const Duration(milliseconds: 500),

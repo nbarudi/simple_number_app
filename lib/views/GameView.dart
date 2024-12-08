@@ -127,6 +127,8 @@ class _GameViewPageState extends State<GameViewPage> {
                   width: width * 0.5,
                   child: ElevatedButton(
                       onPressed: () async {
+                        _initializeSpinners();
+                        await Future.delayed(Duration(milliseconds: 500));
                         _triggerAllSpinners();
                       },
                       style: ElevatedButton.styleFrom(backgroundColor: kprimary),
